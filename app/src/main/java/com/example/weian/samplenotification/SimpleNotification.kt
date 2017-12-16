@@ -12,6 +12,10 @@ import android.content.Context
 class SimpleNotification(context: Context, title: String, content: String) {
     private val notifyID = 1
     private val PLAYER_ICON = R.drawable.ic_music_player
+    private val PLAYER_ICON_PLAY = R.drawable.ic_music_player_play
+    private val PLAYER_ICON_STOP = R.drawable.ic_music_player_stop
+    private val PLAYER_ICON_PAUSE = R.drawable.ic_music_player_pause
+    private val PLAYER_ICON_FORWARD = R.drawable.ic_music_player_forward
 
     private var context: Context
     private var title: String
@@ -31,10 +35,22 @@ class SimpleNotification(context: Context, title: String, content: String) {
                 .setSmallIcon(PLAYER_ICON)
                 .setContentTitle(title)
                 .setContentText(content)
+                .addAction(PLAYER_ICON_PLAY, "Play", null)
+                .addAction(PLAYER_ICON_FORWARD, "Next", null)
                 .build()
     }
 
+    /**
+     * start showing the notification
+     */
     fun show() {
+        initNotification()
         manager.notify(notifyID, notification)
+    }
+
+    /**
+     * destroy this notification
+     */
+    fun stop() {
     }
 }

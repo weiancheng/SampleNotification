@@ -46,12 +46,10 @@ class NotificationService : Service() {
     override fun onBind(intent: Intent?): IBinder = mBinder
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        if (intent?.action.equals(ACTION_PLAY)) {
-            musicPlayerChangeToPlay()
-        } else if (intent?.action.equals(ACTION_PAUSE)) {
-            musicPlayerChangeToPause()
-        } else if (intent?.action.equals(ACTION_FORWARD)) {
-            musicPlayerChangeToNext()
+        when {
+            intent?.action.equals(ACTION_PLAY) -> musicPlayerChangeToPlay()
+            intent?.action.equals(ACTION_PAUSE) -> musicPlayerChangeToPause()
+            intent?.action.equals(ACTION_FORWARD) -> musicPlayerChangeToNext()
         }
 
         return super.onStartCommand(intent, flags, startId)

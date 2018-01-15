@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SampleNotification</string>
+    <string name="music_name">Music Name</string>
+    <string name="singer">Singer</string>
+    <string name="now_time">Now Time</string>
+    <string name="duration">Duration</string>
 </resources>
